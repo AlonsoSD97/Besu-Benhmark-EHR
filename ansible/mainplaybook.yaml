@@ -1,0 +1,8 @@
+
+tasks : 
+  - name: Deploy Apache and custom html page
+      hosts: BesuHosts
+      become: yes
+      become_method: sudo
+      roles:
+        - simple-web
