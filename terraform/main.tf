@@ -10,12 +10,12 @@ variable "instance_count" {
 
 provider "google" {
   credentials = file("/home/alonsosalasdias15_gmail_com/.gcp/gcp-key-ansible-sa.json") # Crar una service account en gcp
-  project     = "blockchain-405101" # "<tu ID de proyecto GCP>"
+  project     = "benchmark-besu" # "<tu ID de proyecto GCP>"
   region      = "us-central1"
 }
 resource "google_compute_subnetwork" "subnet" {
 network = "default"
-ip_cidr_range = "10.0.0.0/16"
+ip_cidr_range = "10.1.0.0/16"
 name = "subnet"  
 }
 
