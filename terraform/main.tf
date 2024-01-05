@@ -44,6 +44,10 @@ resource "google_compute_instance" "mi_instancia" {
       // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
     }
   }
+    service_account {
+    email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
+    scopes = ["cloud-platform"]
+  }
 }
 
 resource "google_compute_firewall" "allow_ssh" {

@@ -1,8 +1,7 @@
 ---
--hosts: BesuHosts
-  become: yes
+- name: install apache
+  hosts: BesuHosts
+  become: true
   become_method: sudo
-tasks : 
-  - name: Deploy Apache and custom html page
-    roles:
-      - simple-web
+  roles:
+    - simple-web
