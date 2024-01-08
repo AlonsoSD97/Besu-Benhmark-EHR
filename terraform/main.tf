@@ -46,22 +46,22 @@ resource "google_compute_instance" "mi_instancia" {
   # }
 }
 
-resource "google_compute_firewall" "allow_ssh" {
-  name    = "allow-ssh"
-  network = "default"
+# resource "google_compute_firewall" "allow_ssh" {
+#   name    = "allow-ssh"
+#   network = "default"
 
-  allow {
-    protocol = "tcp"
-    ports    = ["22"]
-  }
+  # allow {
+  #   protocol = "tcp"
+  #   ports    = ["22"]
+  # }
 
-  source_ranges = ["0.0.0.0/0"]
-  target_tags = ["blockchain"]
-}
+#   source_ranges = ["0.0.0.0/0"]
+#   target_tags = ["blockchain"]
+# }
 
 resource "google_compute_firewall" "allow_besu" {
   name    = "allow-besu"
-  network = "default"
+  network = "main"
   allow {
     protocol = "tcp"
     ports    = ["30303", "8545", "8546","80","8080"]
@@ -73,7 +73,7 @@ resource "google_compute_firewall" "allow_besu" {
 
 resource "google_compute_firewall" "allow_besu_udp" {
   name    = "allow-besu-udp"
-  network = "default"
+  network = "main"
 
   allow {
     protocol = "udp"

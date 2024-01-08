@@ -1,6 +1,7 @@
 ---
 - name: install apache
   hosts: BesuHosts
+  ignore_errors: yes
   become: true
   become_method: sudo
   roles:

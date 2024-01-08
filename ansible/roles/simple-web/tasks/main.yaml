@@ -1,7 +1,7 @@
 ---
 
 - name: Install python-apt via command module
-  command: apt-get install python-apt -y
+  command: apt-get install python
 
 - name: Install apache on instances
   apt: name=apache2 update_cache=yes state=present
