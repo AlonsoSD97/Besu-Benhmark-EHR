@@ -3,20 +3,15 @@
 variable "instance_count" {
   description = "Número de instancias a crear"
   type        = number
-  default     = 1
+  default     = 2
 }
 
 # main.tf
 
 provider "google" {
-  credentials = file("/home/alonsosalasdias15_gmail_com/.gcp/gcp-key-ansible-sa.json") # Crar una service account en gcp
-  project     = "benchmark-besu" # "<tu ID de proyecto GCP>"
+  # credentials = file("/home/alonsosalasdias15_gmail_com/.gcp/gcp-key-ansible-sa.json") # Crar una service account en gcp
+  project     = "caliperbesu" # "<tu ID de proyecto GCP>"
   region      = "us-central1"
-}
-resource "google_compute_subnetwork" "subnet" {
-network = "default"
-ip_cidr_range = "10.1.0.0/16"
-name = "subnet"  
 }
 
 resource "google_compute_instance" "mi_instancia" {
@@ -38,16 +33,17 @@ resource "google_compute_instance" "mi_instancia" {
   }
 
   network_interface {
-    network = "default"
-    subnetwork = "subnet"
+    network = "main"
+    subnetwork = "public"
+    network_ip = "10.0.64.${count.index + 2}"
     access_config {
       // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
     }
   }
-    service_account {
-    email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
-    scopes = ["cloud-platform"]
-  }
+  #   service_account {
+  #   email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
+  #   scopes = ["cloud-platform"]
+  # }
 }
 
 resource "google_compute_firewall" "allow_ssh" {
