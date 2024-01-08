@@ -1,0 +1,23 @@
+---
+- hosts: besu-hosts
+  connection: local
+  force_handlers: True
+ 
+
+  pre_tasks:
+    - name: Install OpenJDK 11
+      become: true
+      apt:
+        name: openjdk-11-jdk
+        state: present  # Puedes cambiar a 'latest' si quieres siempre la última versión
+
+  roles:
+    - role: consensys.hyperledger_besu
+      vars:
+        besu_version: 23.10.3
+        besu_network: custom 
+        besu_config_dir : /home/ubuntu-user/Besu-management/besu/
+        besu_genesis_path: /home/ubuntu-user/Besu-management/besu/genesis.json
+        besu_rpc_http_enabled: true
+        besu_rpc_http_host : 0.0.0.0
+        besu_rpc_http_port : 8545

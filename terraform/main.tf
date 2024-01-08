@@ -3,7 +3,7 @@
 variable "instance_count" {
   description = "Número de instancias a crear"
   type        = number
-  default     = 2
+  default     = 4
 }
 
 # main.tf
