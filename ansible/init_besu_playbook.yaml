@@ -1,12 +1,12 @@
 ---
-- hosts: besu-hosts
-  connection: local
+- hosts: BesuHosts
   force_handlers: True
  
 
   pre_tasks:
     - name: Install OpenJDK 11
       become: true
+      become_method: sudo
       apt:
         name: openjdk-11-jdk
         state: present  # Puedes cambiar a 'latest' si quieres siempre la última versión
