@@ -20,7 +20,7 @@
         besu_version: 23.10.3
         besu_network: custom 
         besu_miner_enabled: "true"
-        besu_genesis_path: /home/alonso.salas/Besu-Benhmark-EHR/besu/genesis.json
+        besu_genesis_path: /etc/besu/genesis/genesis.json
         besu_rpc_http_enabled: true
         besu_rpc_http_host : 0.0.0.0
         besu_rpc_http_port : 8545
