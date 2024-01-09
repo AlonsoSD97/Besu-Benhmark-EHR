@@ -10,6 +10,9 @@
       apt:
         name: openjdk-11-jdk
         state: present  # Puedes cambiar a 'latest' si quieres siempre la última versión
+    - name: copy genesis file
+        copy: src=~/Besu-Benhmark-EHR/besu/genesis.json dest=/etc/besu/genesis/genesis.json
+       
 
   roles:
     - role: consensys.hyperledger_besu
