@@ -10,10 +10,20 @@
       apt:
         name: openjdk-11-jdk
         state: present  # Puedes cambiar a 'latest' si quieres siempre la última versión
+    - name: Create destination directory for genesis file
+      become: true
+      become_method: sudo
+      file:
+        path: /etc/besu/genesis
+        state: directory
+        mode: '0755'    
     - name: copy genesis file
-        copy: src=~/Besu-Benhmark-EHR/besu/genesis.json dest=/etc/besu/genesis/genesis.json
-       
-
+      become: true
+      become_method: sudo
+      copy: 
+        src:  ~/Besu-Benhmark-EHR/besu/genesis.json 
+        dest: /etc/besu/genesis/genesis.json
+              
   roles:
     - role: consensys.hyperledger_besu
       vars:
@@ -21,6 +31,7 @@
         besu_network: custom 
         besu_miner_enabled: "true"
         besu_genesis_path: /etc/besu/genesis/genesis.json
+        besu_config_dir: /etc/besu
         besu_rpc_http_enabled: true
         besu_rpc_http_host : 0.0.0.0
         besu_rpc_http_port : 8545
