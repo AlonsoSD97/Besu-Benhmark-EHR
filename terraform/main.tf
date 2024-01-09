@@ -64,10 +64,10 @@ resource "google_compute_firewall" "allow_besu" {
   network = "main"
   allow {
     protocol = "tcp"
-    ports    = ["30303", "8545", "8546","80","8080"]
+    ports    = ["30303", "8545", "8546","80","8080","9545","9546"]
   }
 
-  source_ranges = ["10.0.0.0/8"]
+  source_ranges = ["0.0.0.0/0"]
   target_tags = [ "blockchain" ]
 }
 
@@ -80,7 +80,7 @@ resource "google_compute_firewall" "allow_besu_udp" {
     ports    = ["8545", "8546"]
   }
 
-  source_ranges = ["10.0.0.0/8"]
+  source_ranges = ["0.0.0.0/0"]
 }
 #   provisioner "local-exec" {
 #     command = "./output_ips.sh ${self.network_interface.0.access_config.0.nat_ip}"
