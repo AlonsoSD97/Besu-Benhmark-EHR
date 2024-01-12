@@ -1,0 +1,36 @@
+---
+galaxy_info:
+  author: Consensys
+  role_name: hyperledger_besu
+  description: Besu is an open-source java enterprise ethereum client
+  company: Consensys
+  license: license (Apache)
+  min_ansible_version: 2.8.2
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+        - focal
+        - jammy
+    - name: EL
+      versions:
+        - 7
+    - name: Fedora
+      versions:
+        - 28
+        - 29
+        - 30
+    - name: MacOSX
+      versions:
+        - all
+  galaxy_tags:
+    - besu
+    - blockchain
+    - ethereum
+    - enterprise
+    - crypto
