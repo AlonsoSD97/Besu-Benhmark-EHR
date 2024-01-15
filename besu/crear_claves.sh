@@ -11,7 +11,7 @@ besu operator generate-blockchain-config --config-file="$CONFIG_FILE" --to="$OUT
 i=1
 for dir in "$OUTPUT_DIR"/keys/*; do
     if [ -d "$dir" ]; then
-        new_dir="${dir%/*}/node_${i/}"
+        new_dir="${dir%/*}/node-${i/}"
         mv "$dir" "$new_dir"
         ((i=i+1))
     fi

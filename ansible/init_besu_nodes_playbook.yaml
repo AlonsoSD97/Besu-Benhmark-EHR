@@ -1,5 +1,5 @@
 ---
-- hosts: BesuHosts
+- hosts: BesuBotNodes
   force_handlers: True
  
   pre_tasks:
@@ -20,7 +20,7 @@
       become: true
       become_method: sudo
       copy: 
-        src:  ~/Besu-Benhmark-EHR/besu/genesis.json 
+        src:  ~/Besu-Benhmark-EHR/besu/qbft-genesis.json 
         dest: /etc/besu/genesis/genesis.json   
     - name: Create destination directory for config file
       become: true
@@ -70,8 +70,24 @@
       become: true
       become_method: sudo
       copy: 
-        src:  ~/Besu-Benhmark-EHR/besu/genesis.json 
+        src:  ~/Besu-Benhmark-EHR/besu/qbft-genesis.json 
         dest: /etc/besu/genesis/genesis.json
+    - name: Create destination directory for keys
+      become: true
+      become_method: sudo
+      file:
+        path: /etc/besu/keys
+        state: directory
+        mode: '0755'
+    - name: copy key file
+      become: true
+      become_method: sudo
+      copy: 
+        src:  ~/Besu-Benhmark-EHR/besu/keys/keys/{{ inventory_hostname }}/key
+        dest: /etc/besu/keys/key
+      copy: 
+        src:  ~/Besu-Benhmark-EHR/besu/keys/keys/{{ inventory_hostname }}/key.pub
+        dest: /etc/besu/keys/key.pub
               
   roles:
     - role: consensys.hyperledger_besu

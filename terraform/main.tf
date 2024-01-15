@@ -16,7 +16,7 @@ provider "google" {
 
 resource "google_compute_instance" "mi_instancia" {
   count        = var.instance_count
-  name         = "mi-instancia-${count.index + 1}"
+  name         = "node-${count.index + 1}"
   machine_type = "e2-standard-4"
   zone         = "us-central1-a"
   tags = [ "blockchain","http-server","https-server" ]

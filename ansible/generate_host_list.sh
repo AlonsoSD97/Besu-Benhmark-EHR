@@ -3,7 +3,7 @@ n=3
 echo "[BesuHosts]"
 for ((i=1; i<=n; i++)) 
 do
-    echo "10.0.64.($i+2) ansible_user=alonso.salas hostname=node$i"
+    echo "10.0.64.$(($i+2)) ansible_user=alonso.salas hostname=node_$i"
 done
 echo ""
 echo "[BesuBotNodes]"
