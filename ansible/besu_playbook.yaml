@@ -5,6 +5,7 @@
   roles:
     - role: hyperledger_besu_custom
       vars:
+        besu_node_private_key_file: /etc/besu/keys/key
         besu_version: 23.10.3
         besu_network: custom 
         besu_miner_enabled: "true"
@@ -21,6 +22,7 @@
     - role: hyperledger_besu_custom
       vars:
         besu_version: 23.10.3
+        besu_node_private_key_file: /etc/besu/keys/key
         besu_network: custom 
         besu_miner_enabled: "true"
         besu_genesis_path: /etc/besu/genesis/genesis.json

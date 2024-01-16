@@ -95,6 +95,7 @@
   roles:
     - role: consensys.hyperledger_besu
       vars:
+        besu_node_private_key_file: /etc/besu/keys/key
         besu_version: 23.10.3
         besu_network: custom 
         besu_miner_enabled: "true"

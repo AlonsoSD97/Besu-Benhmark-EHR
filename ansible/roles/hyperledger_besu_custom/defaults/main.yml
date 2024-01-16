@@ -84,6 +84,9 @@ besu_tx_pool_max_size: 4096
 besu_tx_pool_price_bump: 10
 besu_tx_pool_retention_hours: 13
 
+#bootnodes
+besu_bootnodes: ""
+
 # privacy
 besu_privacy_enabled: "false"
 besu_privacy_url: "http://127.0.0.1:8888"

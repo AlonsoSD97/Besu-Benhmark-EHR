@@ -37,6 +37,13 @@ engine-host-allowlist=[{{besu_engine_host_allowlist|map('to_json')|join(',')}}]
 node-private-key-file="{{besu_node_private_key_file}}"
 {% endif %}
 
+# bootnode
+{% if besu_bootnode is defined and besu_bootnode != "" %}
+bootnode="{{besu_bootnode}}"
+{% endif %}
+
+
+
 {% if besu_required_blocks is defined and besu_required_blocks|length > 0  %}
 required-blocks=[{{besu_required_blocks|map('to_json')|join(',')}}]
 {% endif %}
