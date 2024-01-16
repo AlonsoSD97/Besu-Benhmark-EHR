@@ -63,19 +63,34 @@
   become: true
   register: link_current
 
+- name: Agregar Besu al PATH en /etc/profile
+  become: true
+  lineinfile:
+    path: /etc/profile
+    line: 'export PATH="$PATH:/opt/besu"'
+
+- name: Agregar binarios Besu al PATH en /etc/profile
+  become: true
+  lineinfile:
+    path: /etc/profile
+    line: 'export PATH="$PATH:/opt/besu/besu-23.10.3/bin"'
+
+- name: Reload Profile
+  become: true
+  shell: source /etc/profile
+  args:
+    executable: /bin/bash
+  async: 0
+  poll: 0
+
+
+
 - name: Set updated optionally to trigger a systemd restart at the end
   set_fact:
     besu_state_updates: "{{ besu_state_updates + ['besu.install_dir'] }}"
   when: link_current is changed
 
-- name: Add Besu to PATH
-  lineinfile:
-    path: /etc/environment
-    line: 'PATH="$PATH:{{ besu_install_dir }}"'
-    state: present
-    validate: 'echo $PATH | grep -q "%s"'
-  become: true
-  
-- name: Update PATH environment variable
-  command: source /etc/environment
-  become: true
+
+
+
+
