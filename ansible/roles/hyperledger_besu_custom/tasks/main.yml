@@ -19,6 +19,12 @@
             ( besu_privacy_public_key_file != "" ) and
             ( besu_sync_mode == "FAST" )
 
+- name: Install Besu dependencies
+  include_tasks: "dependencies.yml"
+
+- name: copy files
+  include_tasks: "copyFiles.yml"
+
 - name: Include OS and distribution specific variables
   include_vars: "{{ item }}"
   with_first_found:

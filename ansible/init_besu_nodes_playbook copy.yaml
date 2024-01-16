@@ -83,10 +83,13 @@
       become: true
       become_method: sudo
       copy: 
-        src:  ~/Besu-Benhmark-EHR/besu/keys/keys/{{ inventory_hostname }}/key
+        src:  ~/Besu-Benhmark-EHR/besu/keys/keys/{{ ansible_hostname }}/key
         dest: /etc/besu/keys/key
+    - name: copy public key file
+      become: true
+      become_method: sudo
       copy: 
-        src:  ~/Besu-Benhmark-EHR/besu/keys/keys/{{ inventory_hostname }}/key.pub
+        src:  ~/Besu-Benhmark-EHR/besu/keys/keys/{{ ansible_hostname }}/key.pub
         dest: /etc/besu/keys/key.pub
               
   roles:

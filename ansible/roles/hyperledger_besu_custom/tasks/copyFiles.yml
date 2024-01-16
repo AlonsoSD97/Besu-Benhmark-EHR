@@ -1,0 +1,30 @@
+---
+- name: Create destination directory for genesis file
+  become: true
+  become_method: sudo
+  file:
+    path: /etc/besu/genesis
+    state: directory
+    mode: '0755'
+
+- name: copy genesis file
+  become: true
+  become_method: sudo
+  copy: 
+    src: ~/Besu-Benhmark-EHR/besu/qbft-genesis.json 
+    dest: /etc/besu/genesis/genesis.json
+
+- name: Create destination directory for config file
+  become: true
+  become_method: sudo
+  file:
+    path: /etc/besu/config
+    state: directory
+    mode: '0755'
+
+- name: copy config file
+  become: true
+  become_method: sudo
+  copy: 
+    src: ~/Besu-Benhmark-EHR/besu/config.toml 
+    dest: /etc/besu/config/config.toml
