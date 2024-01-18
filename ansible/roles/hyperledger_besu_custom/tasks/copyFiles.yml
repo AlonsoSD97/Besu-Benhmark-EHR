@@ -49,3 +49,16 @@
     src:  ~/Besu-Benhmark-EHR/besu/keys/keys/{{ ansible_hostname }}/key.pub
     dest: /etc/besu/keys/key.pub
         
+- name: Create destination directory for static-nodes.json file
+  become: true
+  become_method: sudo
+  file:
+    path: /etc/besu
+    state: directory
+    mode: '0755'
+- name: copy static-nodes.json file
+  become: true
+  become_method: sudo
+  copy: 
+    src:  ~/Besu-Benhmark-EHR/besu/static-nodes.json
+    dest: /etc/besu/static-nodes.json

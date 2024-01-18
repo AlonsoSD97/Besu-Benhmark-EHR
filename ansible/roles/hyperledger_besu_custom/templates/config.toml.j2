@@ -25,8 +25,9 @@ engine-jwt-secret="{{besu_engine_jwt_secret}}"
 {% endif %}
 {% if besu_engine_rpc_port is defined and besu_engine_rpc_port != "" %}
 engine-rpc-enabled=true
-engine-rpc-port={{besu_engine_rpc_port}}
+engine-rpc-port={{besu_engine_rpcd_port}}
 {% endif %}
+
 {% if besu_engine_host_allowlist is defined %}
 engine-host-allowlist=[{{besu_engine_host_allowlist|map('to_json')|join(',')}}]
 {% endif %}
@@ -41,6 +42,10 @@ node-private-key-file="{{besu_node_private_key_file}}"
 {% if besu_bootnode is defined and besu_bootnode != "" %}
 bootnode="{{besu_bootnode}}"
 {% endif %}
+
+# discovery
+discovery-enabled={{besu_discovery_enabled}}
+
 
 
 

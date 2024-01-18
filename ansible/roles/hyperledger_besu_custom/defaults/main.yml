@@ -86,6 +86,7 @@ besu_tx_pool_retention_hours: 13
 
 #bootnodes
 besu_bootnodes: ""
+besu_discovery_enabled: "true"
 
 # privacy
 besu_privacy_enabled: "false"
