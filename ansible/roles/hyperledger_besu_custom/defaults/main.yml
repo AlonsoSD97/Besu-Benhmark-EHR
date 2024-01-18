@@ -84,6 +84,10 @@ besu_tx_pool_max_size: 4096
 besu_tx_pool_price_bump: 10
 besu_tx_pool_retention_hours: 13
 
+# unable tx_pool_price_bump for free gas network
+
+besu_unable_tx_pool_price_bump: false
+
 #bootnodes
 besu_bootnodes: ""
 besu_discovery_enabled: "true"

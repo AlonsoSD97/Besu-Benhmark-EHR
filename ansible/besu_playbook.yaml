@@ -17,6 +17,7 @@
         besu_rpc_http_port : 8545
         besu_tx_pool: layered
         besu_tx_pool_price_bump : 0
+        besu_unable_tx_pool_price_bump: true
 
 - hosts: BesuHosts
   force_handlers: True
@@ -38,3 +39,4 @@
         besu_rpc_http_port : 8545
         besu_tx_pool: layered
         besu_tx_pool_price_bump : 0
+        besu_unable_tx_pool_price_bump: true
