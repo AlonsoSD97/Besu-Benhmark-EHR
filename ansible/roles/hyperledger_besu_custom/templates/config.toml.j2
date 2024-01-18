@@ -140,7 +140,7 @@ tx-pool-max-size={{ besu_tx_pool_max_size }}
 tx-pool-retention-hours={{ besu_tx_pool_retention_hours }}
 {% endif %}
 
-{% if besu_unable_tx_pool_price_bump != True %}
+{% if besu_disable_tx_pool_price_bump != True %}
 tx-pool-price-bump={{ besu_tx_pool_price_bump }}
 {% endif %}
 
