@@ -5,9 +5,9 @@ enodes=()
 
 for ((i=1; i<n; i++)); do
     folder="$keys_folder/node-$i"
-    public_key=$(cat "$folder/key.pub")
-    enode="\"enode://$public_key@10.0.64.$(($i+1)):3030\""
-    enodes+=("$enode")
+    public_key=$(cat "$folder/key.pub" | sed 's/0x//') # se leen las claves y se remueve el 0x del inicio
+    enode="\"enode://$public_key@10.0.64.$(($i+1)):3030\"" # se crea el enode con el formato 'enode://<node_id>@<ip>:<listening_port>[?discport=<discovery_port>]'
+    enodes+=("$enode") # se agrega el enode al array
 done
 
 # Create json_file if it does not exist
