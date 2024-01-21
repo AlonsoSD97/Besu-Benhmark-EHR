@@ -7,19 +7,16 @@
       vars:
         besu_version: 23.10.3
         besu_node_private_key_file: /etc/besu/keys/key
-        besu_bootnodes: ["enode://1b1f1ac84a637bc8fff22becc28151d1cbbe1652a01217dd5e64e22d663f4bd14c61c8a788380aea2dab4f748f0038fdde3db2851f8ee74dec0289a4450cae68@10.0.64.2:30303"]
-        besu_static_nodes_file: /etc/besu/static-nodes.json
         besu_discovery_enabled: true
         besu_network: custom 
         besu_miner_enabled: "false"
-        besu_genesis_origin: ~/Besu-Benhmark-EHR/besu/genesis/qbft-genesis-simple.json
+        besu_genesis_origin: /home/alonso.salas/Besu-Benhmark-EHR/besu/qbft-genesis-simple.json
         besu_genesis_path: /etc/besu/genesis/genesis.json
         besu_config_dir: /etc/besu
         besu_rpc_http_enabled: true
         besu_rpc_http_host : 0.0.0.0
         besu_rpc_http_port : 8545
         besu_tx_pool: layered
-        besu_tx_pool_price_bump : 0
         besu_disable_tx_pool_price_bump: true
 - hosts: BesuHosts
   force_handlers: True
@@ -30,16 +27,14 @@
         besu_version: 23.10.3
         besu_node_private_key_file: /etc/besu/keys/key
         besu_bootnodes: ["enode://1b1f1ac84a637bc8fff22becc28151d1cbbe1652a01217dd5e64e22d663f4bd14c61c8a788380aea2dab4f748f0038fdde3db2851f8ee74dec0289a4450cae68@10.0.64.2:30303"]
-        besu_static_nodes_file: /etc/besu/static-nodes.json
         besu_discovery_enabled: true
         besu_network: custom 
         besu_miner_enabled: "false"
-        besu_genesis_origin: ~/Besu-Benhmark-EHR/besu/genesis/qbft-genesis-simple.json
+        besu_genesis_origin: /home/alonso.salas/Besu-Benhmark-EHR/besu/qbft-genesis-simple.json
         besu_genesis_path: /etc/besu/genesis/genesis.json
         besu_config_dir: /etc/besu
         besu_rpc_http_enabled: true
         besu_rpc_http_host : 0.0.0.0
         besu_rpc_http_port : 8545
         besu_tx_pool: layered
-        besu_tx_pool_price_bump : 0
         besu_disable_tx_pool_price_bump: true

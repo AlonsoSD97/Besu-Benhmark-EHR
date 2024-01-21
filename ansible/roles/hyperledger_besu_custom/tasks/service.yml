@@ -31,11 +31,4 @@
     ( besu_managed_service ) and
     ( ansible_os_family != "Darwin" )
 
-# Darwin only
-- name: Create Launchd service plist for Darwin
-  template:
-    src: "{{ besu_launchd_template }}"
-    dest: "{{ besu_launchd_dir }}/org.hyperledger.besu.plist"
-  become: true
-  when: ( ansible_os_family == "Darwin" ) and
-    ( besu_managed_service )
+

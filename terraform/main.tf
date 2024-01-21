@@ -77,7 +77,7 @@ resource "google_compute_firewall" "allow_besu_udp" {
 
   allow {
     protocol = "udp"
-    ports    = ["8545", "8546"]
+    ports    = ["30303", "8545", "8546","80","8080","9545","9546"]
   }
 
   source_ranges = ["0.0.0.0/0"]

@@ -11,8 +11,8 @@
   become: true
   become_method: sudo
   copy: 
-    src: ~/Besu-Benhmark-EHR/besu/qbft-genesis.json 
-    dest: /etc/besu/genesis/genesis.json
+    src: "{{besu_genesis_origin}}"
+    dest: "{{besu_genesis_path}}"
 
 # - name: Create destination directory for config file
 #   become: true

@@ -98,6 +98,10 @@ besu_privacy_url: "http://127.0.0.1:8888"
 besu_privacy_public_key_file: ""
 besu_privacy_marker_tx_signing_key_file: ""
 
+#genesis
+
+besu_genesis_path: ""
+besu_genesis_origin: ""
 
 # internal state to maintain idempotency
 besu_state_updates: []

@@ -44,7 +44,9 @@ bootnode="{{besu_bootnode}}"
 {% endif %}
 
 # discovery
-discovery-enabled={{besu_discovery_enabled}}
+{% if besu_discovery_enabled|bool == True %}
+discovery-enabled=true
+{% endif %}
 
 
 
