@@ -33,6 +33,13 @@ engine-host-allowlist=[{{besu_engine_host_allowlist|map('to_json')|join(',')}}]
 {% endif %}
 {% endif %}
 
+#host allowlist, por defecto se permite solo localhost
+{% if besu_host_allowlist is defined %}
+host-allowlist=[{{besu_host_allowlist|map('to_json')|join(',')}}]
+{% endif %}
+
+
+
 {% if besu_node_private_key_file != "" %}
 # private_key
 node-private-key-file="{{besu_node_private_key_file}}"
