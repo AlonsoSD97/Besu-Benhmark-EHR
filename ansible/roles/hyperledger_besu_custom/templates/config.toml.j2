@@ -4,10 +4,10 @@ data-path="{{besu_data_dir}}"
 # logging
 {% if besu_log4j_config_file is defined %}
 # Settings for logging are defined in "{{ besu_log4j_config_file }}"
-{% else %}
+{% endif %}
+
 {% if besu_log_level is defined %}
 logging="{{besu_log_level}}"
-{% endif %}
 {% endif %}
 
 {% if besu_data_storage_format is defined and besu_data_storage_format != "" %}
@@ -20,9 +20,12 @@ engine-jwt-disabled=true
 {% else %}
 # authentication is enabled by default when engine-jwt-disabled=false
 engine-jwt-disabled=false
+{% endif %}
+
 {% if besu_engine_jwt_secret is defined and besu_engine_jwt_secret != "" %}
 engine-jwt-secret="{{besu_engine_jwt_secret}}"
 {% endif %}
+
 {% if besu_engine_rpc_port is defined and besu_engine_rpc_port != "" %}
 engine-rpc-enabled=true
 engine-rpc-port={{besu_engine_rpcd_port}}
@@ -31,14 +34,6 @@ engine-rpc-port={{besu_engine_rpcd_port}}
 {% if besu_engine_host_allowlist is defined %}
 engine-host-allowlist=[{{besu_engine_host_allowlist|map('to_json')|join(',')}}]
 {% endif %}
-{% endif %}
-
-#host allowlist, por defecto se permite solo localhost
-{% if besu_host_allowlist is defined %}
-host-allowlist=[{{besu_host_allowlist|map('to_json')|join(',')}}]
-{% endif %}
-
-
 
 {% if besu_node_private_key_file != "" %}
 # private_key
@@ -55,8 +50,12 @@ bootnode="{{besu_bootnode}}"
 discovery-enabled=true
 {% endif %}
 
+{% if besu_host_allowlist is defined %}
+host-allowlist={{besu_host_allowlist}}
+{% endif %}
 
-
+{% if besu_discovery_bootnode is defined and besu_discovery_bootnode != "" %}
+{% endif %}
 
 {% if besu_required_blocks is defined and besu_required_blocks|length > 0  %}
 required-blocks=[{{besu_required_blocks|map('to_json')|join(',')}}]
@@ -100,7 +99,6 @@ rpc-http-port={{besu_rpc_http_port}}
 rpc-http-api=[{{besu_rpc_http_api|map('to_json')|join(',')}}]
 rpc-http-cors-origins=[{{besu_rpc_http_cors_origins|map('to_json')|join(',')}}]
 {% endif %}
-
 
 {% if besu_rpc_ws_enabled|bool == True %}
 # ws
@@ -152,7 +150,6 @@ tx-pool-retention-hours={{ besu_tx_pool_retention_hours }}
 {% if besu_disable_tx_pool_price_bump != True %}
 tx-pool-price-bump={{ besu_tx_pool_price_bump }}
 {% endif %}
-
 
 # metrics
 metrics-enabled=true

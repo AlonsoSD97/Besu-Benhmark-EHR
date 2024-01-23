@@ -1,0 +1,71 @@
+# data
+data-path="{{besu_data_dir}}"
+
+
+{% if besu_node_private_key_file != "" %}
+# private_key
+node-private-key-file="{{besu_node_private_key_file}}"
+{% endif %}
+
+# bootnode
+{% if besu_bootnode is defined and besu_bootnode != "" %}
+bootnode="{{besu_bootnode}}"
+{% endif %}
+
+# discovery
+{% if besu_discovery_enabled|bool == True %}
+discovery-enabled=true
+{% endif %}
+
+host-allowlist=["*"]
+
+genesis-file="{{ besu_genesis_path }}"
+
+{% if besu_rpc_http_enabled|bool == True %}
+# rpc
+rpc-http-enabled=true
+rpc-http-host="{{besu_rpc_http_host}}"
+rpc-http-port={{besu_rpc_http_port}}
+rpc-http-api=[{{besu_rpc_http_api|map('to_json')|join(',')}}]
+rpc-http-cors-origins=[{{besu_rpc_http_cors_origins|map('to_json')|join(',')}}]
+{% endif %}
+
+{% if besu_rpc_ws_enabled|bool == True %}
+# ws
+rpc-ws-enabled=true
+rpc-ws-api=[{{besu_rpc_ws_api|map('to_json')|join(',')}}]
+rpc-ws-host="{{besu_rpc_ws_host}}"
+rpc-ws-port={{besu_rpc_ws_port}}
+{% endif %}
+
+{% if besu_graphql_http_enabled|bool == True %}
+# graphql
+graphql-http-enabled=true
+graphql-http-host="{{besu_graphql_http_host}}"
+graphql-http-port={{besu_graphql_http_port}}
+graphql-http-cors-origins=[{{besu_graphql_http_cors_origins|map('to_json')|join(',')}}]
+{% endif %}
+
+
+
+# p2p
+{% if besu_host_ip != "" %}
+p2p-host="{{besu_host_ip}}"
+{% endif %}
+p2p-port={{besu_p2p_port}}
+{% if besu_max_peers is defined %}
+max-peers={{besu_max_peers}}
+{% endif %}
+
+# metrics
+metrics-enabled=true
+metrics-host="{{besu_metrics_host}}"
+metrics-port={{besu_metrics_port}}
+
+
+{% if besu_bootnodes|length > 0 %}
+# bootnodes
+bootnodes=[{{besu_bootnodes|map('to_json')|join(',')}}]
+{% endif %}
+
+

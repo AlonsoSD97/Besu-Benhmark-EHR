@@ -13,13 +13,13 @@
 - name: Set updated optionally to trigger a systemd restart at the end
   set_fact:
     besu_state_updates: "{{ besu_state_updates + ['besu.systemd_file'] }}"
-  when: systemd_file is changed
+  # when: systemd_file is changed #comentado para forzar el reinicio del servicio, descomentar para activar el condicionar
 
 - name: Reload systemd to reread configs
   systemd:
     daemon_reload: yes
   become: true
-  when: systemd_file is changed
+  # when: systemd_file is changed #comentado para forzar el reinicio del servicio, descomentar para activar el condicionar
 
 - name: Enable and start Besu service
   systemd:

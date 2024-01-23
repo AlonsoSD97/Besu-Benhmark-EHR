@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONFIG_FILE="qbft-genesis-generator.json"
+CONFIG_FILE="/home/alonso.salas/Besu-Benhmark-EHR/besu/qbft-genesis-simple-generator.json"
 OUTPUT_DIR="keys"
 PRIVATE_KEY_FILE_NAME="key"
 
