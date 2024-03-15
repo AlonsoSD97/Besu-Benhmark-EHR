@@ -10,7 +10,7 @@ variable "instance_count" {
 
 provider "google" {
   # credentials = file("/home/alonsosalasdias15_gmail_com/.gcp/gcp-key-ansible-sa.json") # Crar una service account en gcp
-  project     = "caliperbesu" # "<tu ID de proyecto GCP>"
+  project     = "caliperbesu-417220" # "<tu ID de proyecto GCP>"
   region      = "us-central1"
 }
 
