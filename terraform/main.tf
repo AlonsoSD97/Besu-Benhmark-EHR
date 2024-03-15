@@ -19,7 +19,7 @@ resource "google_compute_instance" "mi_instancia" {
   name         = "node-${count.index + 1}"
   machine_type = "e2-standard-4"
   zone         = "us-central1-a"
-  tags = [ "blockchain","http-server","https-server" ]
+  tags = [ "blockchain","http-server","https-server","allow-ssh" ]
   scheduling {
     preemptible                 = true
     automatic_restart           = false
