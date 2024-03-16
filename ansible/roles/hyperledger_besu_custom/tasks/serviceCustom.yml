@@ -1,4 +1,4 @@
----
+ ---
 - name: Create Besu systemd service
   template:
     src: "{{ besu_systemd_template }}"
