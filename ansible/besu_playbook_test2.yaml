@@ -6,7 +6,7 @@
       vars:
         besu_version: 23.10.2
         besu_node_private_key_file: /etc/besu/keys/key
-        besu_bootnodes: ["enode://622e7348774bf76475177fdbe75d996615acbf8eeceb66f72773a943c1d28bf6c29c9d4652a8fb4b43b951b2ae062d5d5648b402ed5269dc50826e3c9ca395df@10.0.64.2:30303"]
+        besu_bootnodes: ["enode://7e47f6f8f66efd86e8d32a8eaeadfa32bfc3fd2f385eb270f3f956ad14a4dc0a141f16010cee4f74753b8c384ab01af18bd81646c067be472a51cf9e8f909a00@10.0.64.2:30303"]
         #besu_static_nodes_file: /etc/besu/static-nodes.json
         besu_discovery_enabled: true
         besu_network: custom 
@@ -15,10 +15,16 @@
         besu_genesis_path: /etc/besu/genesis/genesis.json
         besu_config_dir: /etc/besu
         besu_rpc_http_enabled: true
-        besu_rpc_http_host : 0.0.0.0
+        besu_rpc_http_host : 0.0.0.0  
         besu_rpc_http_port : 8545
+        besu_rpc_http_api: ["ADMIN","QBFT", "DEBUG", "NET", "ETH", "MINER", "WEB3"]
+        besu_rpc_ws_enabled: true
+        besu_rpc_ws_host: 0.0.0.0
+        besu_rpc_ws_port: 8546
+        besu_rpc_ws_api: ["ADMIN","QBFT", "DEBUG", "NET", "ETH", "MINER", "WEB3"]
         besu_tx_pool: layered
         besu_tx_pool_price_bump : 0
+        besu_tx_pool_limit_by_account_percentage: 1
         besu_disable_tx_pool_price_bump: true
         besu_config_template: "simple-config.toml.j2"
         # besu_host_allowlist: ["*"]

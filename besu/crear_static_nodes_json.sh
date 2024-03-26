@@ -1,6 +1,6 @@
 json_file="static-nodes.json"
-keys_folder="/home/alonso.salas/Besu-Benhmark-EHR/besu/keys/keys"
-n=4
+keys_folder="./keys/keys"
+n=8
 enodes=()
 
 for ((i=1; i<=n; i++)); do

@@ -17,13 +17,13 @@ provider "google" {
 resource "google_compute_instance" "mi_instancia" {
   count        = var.instance_count
   name         = "node-${count.index + 1}"
-  machine_type = "e2-standard-4"
+  machine_type = "e2-standard-2"
   zone         = "us-central1-a"
   tags = [ "blockchain","http-server","https-server","allow-ssh" ]
   scheduling {
-    preemptible                 = true
+    preemptible                 = false
     automatic_restart           = false
-    provisioning_model          = "SPOT"
+    provisioning_model          = "STANDARD"
   }
 
   boot_disk {
@@ -36,6 +36,38 @@ resource "google_compute_instance" "mi_instancia" {
     network = "main"
     subnetwork = "public"
     network_ip = "10.0.64.${count.index + 2}"
+    access_config {
+      // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
+    }
+  }
+  #   service_account {
+  #   email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
+  #   scopes = ["cloud-platform"]
+  # }
+}
+
+resource "google_compute_instance" "mi_instancia_zona_b" {
+  count        = var.instance_count
+  name         = "node-${count.index + 5}"
+  machine_type = "e2-standard-2"
+  zone         = "us-west1-a"
+  tags = [ "blockchain","http-server","https-server","allow-ssh" ]
+  scheduling {
+    preemptible                 = false
+    automatic_restart           = false
+    provisioning_model          = "STANDARD"
+  }
+
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+    }
+  }
+
+  network_interface {
+    network = "main"
+    subnetwork = "public-us-west1"
+    network_ip = "10.0.65.${count.index + 2}"
     access_config {
       // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
     }
