@@ -1,6 +1,6 @@
 json_file="static-nodes.json"
 keys_folder="./keys/keys"
-n=8
+n=4
 enodes=()
 
 for ((i=1; i<=n; i++)); do

@@ -1,5 +1,3 @@
-#min gas price 0 to allow free transactions
-min-gas-price=0
 # data
 data-path="{{besu_data_dir}}"
 
@@ -63,11 +61,6 @@ metrics-enabled=true
 metrics-host="{{besu_metrics_host}}"
 metrics-port={{besu_metrics_port}}
 
-{% if besu_tx_pool == "layered" and besu_enable_tx_pool_options |bool == true %}
-tx-pool-layer-max-capacity={{besu_tx_pool_layer_max_capacity}}
-tx-pool-max-future-by-sender={{besu_tx_pool_max_future_by_sender}}
-tx-pool-max-prioritized={{besu_tx_pool_max_prioritized}}
-{% endif %}
 
 {% if besu_bootnodes|length > 0 %}
 # bootnodes

@@ -46,37 +46,37 @@ resource "google_compute_instance" "mi_instancia" {
   # }
 }
 
-resource "google_compute_instance" "mi_instancia_zona_b" {
-  count        = var.instance_count
-  name         = "node-${count.index + 5}"
-  machine_type = "e2-standard-2"
-  zone         = "us-west1-a"
-  tags = [ "blockchain","http-server","https-server","allow-ssh" ]
-  scheduling {
-    preemptible                 = false
-    automatic_restart           = false
-    provisioning_model          = "STANDARD"
-  }
+# resource "google_compute_instance" "mi_instancia_zona_b" {
+#   count        = var.instance_count
+#   name         = "node-${count.index + 5}"
+#   machine_type = "e2-standard-2"
+#   zone         = "us-west1-a"
+#   tags = [ "blockchain","http-server","https-server","allow-ssh" ]
+#   scheduling {
+#     preemptible                 = false
+#     automatic_restart           = false
+#     provisioning_model          = "STANDARD"
+#   }
 
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-2004-lts"
-    }
-  }
+#   boot_disk {
+#     initialize_params {
+#       image = "ubuntu-os-cloud/ubuntu-2004-lts"
+#     }
+#   }
 
-  network_interface {
-    network = "main"
-    subnetwork = "public-us-west1"
-    network_ip = "10.0.65.${count.index + 2}"
-    access_config {
-      // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
-    }
-  }
-  #   service_account {
-  #   email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
-  #   scopes = ["cloud-platform"]
-  # }
-}
+#   network_interface {
+#     network = "main"
+#     subnetwork = "public-us-west1"
+#     network_ip = "10.0.65.${count.index + 2}"
+#     access_config {
+#       // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
+#     }
+#   }
+#   #   service_account {
+#   #   email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
+#   #   scopes = ["cloud-platform"]
+#   # }
+# }
 
 # resource "google_compute_firewall" "allow_ssh" {
 #   name    = "allow-ssh"
