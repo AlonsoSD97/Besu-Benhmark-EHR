@@ -6,7 +6,7 @@
       vars:
         besu_version: 23.10.2
         besu_node_private_key_file: /etc/besu/keys/key
-        besu_bootnodes: ["enode://4e11b2200e98289050e4555d7496876423524b93df4993cc447b40b5e4e1a9691417fe930e2ac3c95905cb0cfe422f916487190a04616ebaf55fecff7ebb366c@10.0.64.2:30303"]
+        besu_bootnodes: ["enode://06dfbfa1963c1dd4d20712a9803817ff716838737f0879100e88901e48a2b34182f7f66a7c560883da0c60765d16d396c3906af797fdb8c1c0fe640c8334e2b5@10.0.64.2:30303"]
         #besu_static_nodes_file: /etc/besu/static-nodes.json
         besu_discovery_enabled: true
         besu_network: custom 
@@ -24,8 +24,8 @@
         besu_rpc_ws_api: ["ADMIN","QBFT", "DEBUG", "NET", "ETH", "MINER", "WEB3"]
         besu_enable_tx_pool_options: true
         besu_tx_pool: layered
-        besu_tx_pool_max_future_by_sender: 25000
-        besu_tx_pool_layer_max_capacity: 50000000
+        besu_tx_pool_max_future_by_sender: 5000
+        besu_tx_pool_layer_max_capacity: 5000
         besu_tx_pool_max_prioritized: 5000
         besu_config_template: "simple-config.toml.j2"
         # besu_host_allowlist: ["*"]

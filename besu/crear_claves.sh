@@ -6,7 +6,7 @@ PRIVATE_KEY_FILE_NAME="key"
 
 rm -rf "$OUTPUT_DIR"
 
-besu operator generate-blockchain-config --config-file="$CONFIG_FILE" --to="$OUTPUT_DIR" --private-key-file-name="$PRIVATE_KEY_FILE_NAME"
+./besu-binaries/besu/bin/besu operator generate-blockchain-config --config-file="$CONFIG_FILE" --to="$OUTPUT_DIR" --private-key-file-name="$PRIVATE_KEY_FILE_NAME"
 
 
 #Rename subfolders in keys/keys to node_i

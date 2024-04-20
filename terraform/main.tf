@@ -10,14 +10,14 @@ variable "instance_count" {
 
 provider "google" {
   # credentials = file("/home/alonsosalasdias15_gmail_com/.gcp/gcp-key-ansible-sa.json") # Crar una service account en gcp
-  project     = "caliperbesu-417220" # "<tu ID de proyecto GCP>"
+  project     = "caliper-besu" # "<tu ID de proyecto GCP>"
   region      = "us-central1"
 }
 
 resource "google_compute_instance" "mi_instancia" {
   count        = var.instance_count
   name         = "node-${count.index + 1}"
-  machine_type = "e2-standard-2"
+  machine_type = "t2d-standard-1"
   zone         = "us-central1-a"
   tags = [ "blockchain","http-server","https-server","allow-ssh" ]
   scheduling {
@@ -46,38 +46,101 @@ resource "google_compute_instance" "mi_instancia" {
   # }
 }
 
-# resource "google_compute_instance" "mi_instancia_zona_b" {
-#   count        = var.instance_count
-#   name         = "node-${count.index + 5}"
-#   machine_type = "e2-standard-2"
-#   zone         = "us-west1-a"
-#   tags = [ "blockchain","http-server","https-server","allow-ssh" ]
-#   scheduling {
-#     preemptible                 = false
-#     automatic_restart           = false
-#     provisioning_model          = "STANDARD"
-#   }
+resource "google_compute_instance" "mi_instancia_zona_b" {
+  count        = var.instance_count
+  name         = "node-${count.index + 5}"
+  machine_type = "t2d-standard-1"
+  zone         = "us-east1-b"
+  tags = [ "blockchain","http-server","https-server","allow-ssh" ]
+  scheduling {
+    preemptible                 = false
+    automatic_restart           = false
+    provisioning_model          = "STANDARD"
+  }
 
-#   boot_disk {
-#     initialize_params {
-#       image = "ubuntu-os-cloud/ubuntu-2004-lts"
-#     }
-#   }
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+    }
+  }
 
-#   network_interface {
-#     network = "main"
-#     subnetwork = "public-us-west1"
-#     network_ip = "10.0.65.${count.index + 2}"
-#     access_config {
-#       // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
-#     }
-#   }
-#   #   service_account {
-#   #   email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
-#   #   scopes = ["cloud-platform"]
-#   # }
-# }
+  network_interface {
+    network = "main"
+    subnetwork = "public-us-east1"
+    network_ip = "10.0.65.${count.index + 2}"
+    access_config {
+      // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
+    }
+  }
+  #   service_account {
+  #   email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
+  #   scopes = ["cloud-platform"]
+  # }
+}
 
+resource "google_compute_instance" "mi_instancia_zona_c" {
+  count        = var.instance_count
+  name         = "node-${count.index + 9}"
+  machine_type = "t2d-standard-1"
+  zone         = "us-west1-a"
+  tags = [ "blockchain","http-server","https-server","allow-ssh" ]
+  scheduling {
+    preemptible                 = false
+    automatic_restart           = false
+    provisioning_model          = "STANDARD"
+  }
+
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+    }
+  }
+
+  network_interface {
+    network = "main"
+    subnetwork = "public-us-west1"
+    network_ip = "10.0.66.${count.index + 2}"
+    access_config {
+      // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
+    }
+  }
+  #   service_account {
+  #   email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
+  #   scopes = ["cloud-platform"]
+  # }
+}
+
+resource "google_compute_instance" "mi_instancia_zona_d" {
+  count        = var.instance_count
+  name         = "node-${count.index + 13}"
+  machine_type = "t2d-standard-1"
+  zone         = "us-south1-a"
+  tags = [ "blockchain","http-server","https-server","allow-ssh" ]
+  scheduling {
+    preemptible                 = false
+    automatic_restart           = false
+    provisioning_model          = "STANDARD"
+  }
+
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+    }
+  }
+
+  network_interface {
+    network = "main"
+    subnetwork = "public-us-south1"
+    network_ip = "10.0.67.${count.index + 2}"
+    access_config {
+      // Elegir 'Ephemeral' para asignar una dirección IP externa automáticamente
+    }
+  }
+  #   service_account {
+  #   email  = "alonso-salas@benchmark-besu.iam.gserviceaccount.com"
+  #   scopes = ["cloud-platform"]
+  # }
+}
 # resource "google_compute_firewall" "allow_ssh" {
 #   name    = "allow-ssh"
 #   network = "default"
